@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   w.vm.network "private_network", ip: "192.168.33.13"
   w.vm.provider "virtualbox" do |vb|
     vb.memory = "4096"
-    vb.cpus = 2
+    vb.cpus = 4
     vb.name = "master"
   end
   w.vm.provision "setup-hosts", :type => "shell", :path => "k8s-setup-master.sh" do |s|
@@ -23,8 +23,8 @@ Vagrant.configure("2") do |config|
       w.vm.network "private_network", ip: "192.168.33.14"
 
       w.vm.provider "virtualbox" do |vb|
-        vb.memory = "1024"
-        vb.cpus = 1
+        vb.memory = "2048"
+        vb.cpus = 2
         vb.name = "worker-1"
       end
       w.vm.provision "setup-hosts", :type => "shell", :path => "k8s-setup-master.sh" do |s|
@@ -40,8 +40,8 @@ Vagrant.configure("2") do |config|
       w.vm.network "private_network", ip: "192.168.33.15"
 
       w.vm.provider "virtualbox" do |vb|
-        vb.memory = "1024"
-        vb.cpus = 1
+        vb.memory = "2048
+        vb.cpus = 2
         vb.name = "worker-2"
       end
         w.vm.provision "setup-hosts", :type => "shell", :path => "k8s-setup-master.sh" do |s|
