@@ -14,9 +14,9 @@ sed -i -e 's/#DNS=/DNS=8.8.8.8/' /etc/systemd/resolved.conf
 
 # Update /etc/hosts about other hosts
 cat >> /etc/hosts <<EOF
-192.168.33.13 master
-192.168.33.14 worker-1
-192.168.33.15 worker-2
+192.168.43.13 master
+192.168.43.14 worker-1
+192.168.43.15 worker-2
 EOF
 
 apt-get update 
@@ -49,7 +49,7 @@ sudo sysctl --system
 sudo modprobe overlay
 sudo modprobe br_netfilter
 #disable swaping
-#sed 's/#   /swap.*/#swap.img/' /etc/fstab
-#sudo swapoff -a
+sed 's/#   /swap.*/#swap.img/' /etc/fstab
+sudo swapoff -a
 
 service systemd-resolved restart
