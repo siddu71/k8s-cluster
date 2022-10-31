@@ -30,7 +30,14 @@ in master node
 1. set root password
 2. switch root account
 3. kubeadm init --apiserver-advertise-address 192.168.43.13 --pod-network-cidr=10.244.0.0/16
-4. remove --port 0 from /etc/kubernetes/manifests/kube-[controller-api| scheduler].yaml
+
+'''
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+```
+4. kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 5. join workers to master node
 ```
 for workers
